@@ -505,3 +505,5 @@ const handleEditFunc = async(data)=>{
 }
 
 export default Profile;
+
+
