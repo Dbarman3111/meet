@@ -7,7 +7,7 @@ function MessageModal({ selfData, userData }) {
 const [message, setMessage] = useState("");
 
 const handleSendMessage = async(e) => {
-await axios.post('http://localhost:4000/api/conversation/addConversation', { receiverId:userData?._id, message:message}, {withCredentials:true}).then(res=>{
+await axios.post('https://meet-backend-p45g.onrender.com', { receiverId:userData?._id, message:message}, {withCredentials:true}).then(res=>{
  window.location.reload();
 }).catch(err=> {
   console.log(err);;
