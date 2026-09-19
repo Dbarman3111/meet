@@ -19,7 +19,7 @@ function AddModel(props) {
   const handlePost = async()=>{
     if(desc.trim().length === 0 & !imageUrl) return toast.error("Please enter field")
 
-      await axios.post('http://localhost:4000/api/post', {desc:desc,imageLink:imageUrl}, {withCredentials:true}).then((res =>{
+      await axios.post('https://meet-backend-p45g.onrender.com', {desc:desc,imageLink:imageUrl}, {withCredentials:true}).then((res =>{
           window.location.reload();
       })).catch(err =>{
         console.log(err)
