@@ -14,7 +14,7 @@ function Notifications() {
   const [ notifications , setNotifications]= useState([])
 
   const fetchNotificationData = async() => {
- await axios.get('http://localhost:4000/api/notification', {withCredentials:true}).then(res=>{
+ await axios.get('https://meet-backend-p45g.onrender.com', {withCredentials:true}).then(res=>{
     console.log(res.data.notifications)
     setNotifications(res.data.notifications)
   }).catch(err=> {
@@ -25,7 +25,7 @@ function Notifications() {
 
 
 const handleOnClickNotification = async(notification) => {
-  await axios.put('http://localhost:4000/api/notification/isRead',{notification: notification._id}, {withCredentials:true}).then(res=>{
+  await axios.put('https://meet-backend-p45g.onrender.com',{notification: notification._id}, {withCredentials:true}).then(res=>{
    if(notification?.type === 'comment'){
       navigate(`/profile/${ownData?._id}/activities/${notification?.postId}`)
    }
