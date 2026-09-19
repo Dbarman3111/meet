@@ -55,7 +55,7 @@ function Post({ profile, item, key , personalData  }) {
   },[])
 
   const handleLikeFunc = async()=>{
-    await axios.post('http://localhost:4000/api/post/likeDislike', {postId:item?._id}, {withCredentials:true}).then(res=>{
+    await axios.post('https://meet-backend-p45g.onrender.com', {postId:item?._id}, {withCredentials:true}).then(res=>{
         if(liked){
           setNoOfLike((prev)=> prev -1);
           setLiked(false);
@@ -71,7 +71,7 @@ function Post({ profile, item, key , personalData  }) {
 
   const handleCommentBoxOpenClose= async()=>{
         setComment(true);
-        await axios.get(`http://localhost:4000/api/comment/${item?._id}`).then(resp=>{
+        await axios.get(`https://meet-backend-p45g.onrender.com`).then(resp=>{
            setComments(resp.data.comments || []);
         }).catch(err=>{
                console.log(err);
