@@ -21,7 +21,7 @@ function MyNetwork() {
 
     const fetchFriendList = async () => {
     try {
-        const res = await axios.get('http://localhost:4000/api/auth/friendsList', {withCredentials: true});
+        const res = await axios.get('https://meet-backend-p45g.onrender.com', {withCredentials: true});
         setData(Array.isArray(res.data?.friends) ? res.data.friends : []);
     } catch (err) {
         console.log(err);
@@ -31,7 +31,7 @@ function MyNetwork() {
 
     const  fetchPendingList = async () => {
     try {
-        const res = await axios.get('http://localhost:4000/api/auth/pendingFriendsList', {withCredentials: true});
+        const res = await axios.get('https://meet-backend-p45g.onrender.com', {withCredentials: true});
         setData(Array.isArray(res.data?.pendingFriends) ? res.data.pendingFriends : []);
     } catch (err) {
         console.log(err);
