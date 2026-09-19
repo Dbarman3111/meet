@@ -11,7 +11,7 @@ function GoogleLoginComp(props) {
         const token = credResponse.credential;
         console.log(credResponse);
         console.log(token);
-        const res = await axios.post('http://localhost:4000/api/auth/google', { token },{withCredentials:true});
+        const res = await axios.post('https://meet-backend-p45g.onrender.com', { token },{withCredentials:true});
 
         
         localStorage.setItem('isLogin', 'true');
