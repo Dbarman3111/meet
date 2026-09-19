@@ -22,7 +22,7 @@ function SignUp(props) {
     if(registerField.email.trim().length === 0 || registerField.password.trim().length === 0 || registerField.f_name.trim().length === 0){
       return toast.error("Give your Details.")
     }
-    await axios.post('https://meet-backend-p45g.onrender.com', registerField).then(res =>{
+    await axios.post('https://meet-backend-p45g.onrender.com/api/register', registerField).then(res =>{
       
       toast.success("You have register Successfully");
       setRegisterField({...registerField, email:"", password:"", f_name:""})
