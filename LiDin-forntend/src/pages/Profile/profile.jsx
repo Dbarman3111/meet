@@ -220,7 +220,7 @@ const handleEditFunc = async(data)=>{
 
  const copyToClipboard = () => {
     try{
-     let string = `http://localhost:5173/profile/${id`;
+     let string = `http://localhost:5173/profile/${id}`;
      navigator.clipboard.writeText(string);
     toast.success("Link copied to clipboard");
     }catch(err){
