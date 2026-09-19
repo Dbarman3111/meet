@@ -17,7 +17,7 @@ function SingleActivity() {
   const [ownData , setOwnData]= useState(null)
 
   const fetchDataOnLoad = async () => {
-   await axios.get(`http://localhost:4000/api/post/getPostById/${postId}`).then(res=>{
+   await axios.get(`https://meet-backend-p45g.onrender.com`).then(res=>{
     console.log(res)
     setPost(res.data.post)
    }).catch((err) => {
