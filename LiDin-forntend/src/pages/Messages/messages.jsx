@@ -57,7 +57,7 @@ function Messages() {
 
   const fetchMessages = async () => {
     await axios
-      .get(`http://localhost:4000/api/message/${activeConvId}`, {
+      .get(`https://meet-backend-p45g.onrender.com`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -72,7 +72,7 @@ function Messages() {
 
   const fetchConversationOnLoad = async () => {
     await axios
-      .get("http://localhost:4000/api/conversation/getConversation", {
+      .get("https://meet-backend-p45g.onrender.com", {
         withCredentials: true,
       })
       .then((res) => {
@@ -124,7 +124,7 @@ function Messages() {
 }
 
 const handleSendMessage = async ()=>{
-    await axios.post(`http://localhost:4000/api/message`, {conversation: activeConvId, message: messageText, picture: imageLink }, {withCredentials:true}).then(res=>{
+    await axios.post(`https://meet-backend-p45g.onrender.com`, {conversation: activeConvId, message: messageText, picture: imageLink }, {withCredentials:true}).then(res=>{
       
         socket.emit("sendMessage", activeConvId, res.data)
          setMessageText("");
