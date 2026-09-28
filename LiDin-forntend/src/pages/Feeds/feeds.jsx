@@ -30,8 +30,8 @@ function Feeds() {
   const fetchSelfData = async ()=>{
     try {
         const [userData, postData] = await Promise.all([
-       await axios.get('https://meet-backend-p45g.onrender.com', {withCredentials: true}),
-        await axios.get('https://meet-backend-p45g.onrender.com')
+       await axios.get('https://meet-backend-p45g.onrender.com/api/auth/self', {withCredentials: true}),
+        await axios.get('https://meet-backend-p45g.onrender.com/api/post/getAllPost')
     ]);
      
     setPersonalData(userData.data.user)
