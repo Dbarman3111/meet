@@ -1,3 +1,6 @@
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']); // DNS lookup fix for Render
+
 const express = require('express');
 const cookieParser = require("cookie-parser")
 
