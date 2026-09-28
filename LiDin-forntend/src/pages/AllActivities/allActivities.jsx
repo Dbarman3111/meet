@@ -14,7 +14,7 @@ function Allactivities() {
 
   const fetchDataOnLoad = async () => {
     await axios
-      .get(`https://meet-backend-p45g.onrender.com`)
+      .get(`https://meet-backend-p45g.onrender.com/api/post/getAllPostForUser/${id}`)
       .then((res) => {
         console.log(res);
         setPosts(res.data.posts);
