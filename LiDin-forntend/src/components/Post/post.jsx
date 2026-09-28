@@ -30,7 +30,7 @@ function Post({ profile, item, key , personalData  }) {
   const handleSendComment = async(e) => {
     e.preventDefault();
     if(commentText.trim().length===0) return toast.error("Please enter comment");
-    await axios.post('http://localhost:4000/api/comment', {postId: item?._id, comment: commentText}, {withCredentials:true}).then((res=>{
+    await axios.post('https://meet-backend-p45g.onrender.com/api/comment', {postId: item?._id, comment: commentText}, {withCredentials:true}).then((res=>{
      const newComment = res.data.comment || res.data;
      setComments((prev) => [newComment, ...prev]);
      setCommentCount((prev) => prev + 1);
@@ -55,7 +55,7 @@ function Post({ profile, item, key , personalData  }) {
   },[])
 
   const handleLikeFunc = async()=>{
-    await axios.post('https://meet-backend-p45g.onrender.com', {postId:item?._id}, {withCredentials:true}).then(res=>{
+    await axios.post('https://meet-backend-p45g.onrender.com/api/post/likeDislike', {postId:item?._id}, {withCredentials:true}).then(res=>{
         if(liked){
           setNoOfLike((prev)=> prev -1);
           setLiked(false);
@@ -71,7 +71,7 @@ function Post({ profile, item, key , personalData  }) {
 
   const handleCommentBoxOpenClose= async()=>{
         setComment(true);
-        await axios.get(`https://meet-backend-p45g.onrender.com`).then(resp=>{
+        await axios.get(`https://meet-backend-p45g.onrender.com/api/comment/${item?._id}`).then(resp=>{
            setComments(resp.data.comments || []);
         }).catch(err=>{
                console.log(err);
