@@ -10,7 +10,7 @@ router.post('/google', UserController.loginThroughGmail)
 
 router.put('/update', Authentication.auth, UserController.updateUser)
 router.get('/user/:id', UserController.getProfileById)
-router.post('/logout', Authentication.auth, UserController.logout)
+router.post('/logout', UserController.logout)
 
 
 router.get('/self', Authentication.auth, (req, res) =>{
