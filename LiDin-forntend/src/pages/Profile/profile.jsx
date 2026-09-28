@@ -48,9 +48,9 @@ function Profile() {
   const fetchDataOnLoad = async()=>{
     try {
        const [userDatas, postDatas, ownDatas] = await Promise.all([
-        axios.get(`https://meet-backend-p45g.onrender.com`),
-         axios.get(`https://meet-backend-p45g.onrender.com`),
-         axios.get('https://meet-backend-p45g.onrender.com', {withCredentials: true})
+        axios.get(`https://meet-backend-p45g.onrender.com/api/auth/user/${id}`),
+         axios.get(`https://meet-backend-p45g.onrender.com/api/post/getTop5Post/${id}`),
+         axios.get('https://meet-backend-p45g.onrender.com/api/auth/self', {withCredentials: true})
        ]);
 
        setUserData(userDatas.data.user);
@@ -116,7 +116,7 @@ const handleEditFunc = async(data)=>{
       return;
     }
     try{
-      await axios.put(`https://meet-backend-p45g.onrender.com`,{user: data}, {withCredentials: true});
+      await axios.put(`https://meet-backend-p45g.onrender.com/api/auth/update`,{user: data}, {withCredentials: true});
       await fetchDataOnLoad();
       setImageModel(false);
     }catch(err){
@@ -128,7 +128,7 @@ const handleEditFunc = async(data)=>{
   const handleSendFriendRequest = async () => {
     if (!id || id === ownData?._id) return;
     try {
-      await axios.post('https://meet-backend-p45g.onrender.com', { receiver: id }, { withCredentials: true });
+      await axios.post('https://meet-backend-p45g.onrender.com/api/auth/sendFriendReq', { receiver: id }, { withCredentials: true });
       await fetchDataOnLoad();
     } catch (err) {
       const message = err.response?.data?.error || err.message || 'Request failed';
@@ -174,7 +174,7 @@ const handleEditFunc = async(data)=>{
     try {
       if (status === "Approve request") {
         const res = await axios.post(
-          'https://meet-backend-p45g.onrender.com',
+          'https://meet-backend-p45g.onrender.com/api/auth/acceptFriendRequest',
           { friendId: userData?._id },
           { withCredentials: true }
         );
@@ -182,7 +182,7 @@ const handleEditFunc = async(data)=>{
         toast.success(res.data.message);
       } else if (status === "Connect") {
         const res = await axios.post(
-          'https://meet-backend-p45g.onrender.com',
+          'https://meet-backend-p45g.onrender.com/api/auth/sendFriendReq',
           { receiver: userData?._id },
           { withCredentials: true }
         );
@@ -190,7 +190,7 @@ const handleEditFunc = async(data)=>{
         toast.success(res.data.message);
       } else if (status === "Disconnect") {
         const res = await axios.delete(
-          `https://meet-backend-p45g.onrender.com`,
+          `https://meet-backend-p45g.onrender.com/api/auth/removeFromFriendList/${userData?._id}`,
           { withCredentials: true }
         );
 
@@ -209,7 +209,7 @@ const handleEditFunc = async(data)=>{
   }
 
  const handleLogout = async () => {
- await axios.post('https://meet-backend-p45g.onrender.com', {}, { withCredentials: true }).then(res=>{
+ await axios.post('https://meet-backend-p45g.onrender.com/api/auth/logout', {}, { withCredentials: true }).then(res=>{
   localStorage.clear();
   window.location.reload();
  }).catch (err=> {
