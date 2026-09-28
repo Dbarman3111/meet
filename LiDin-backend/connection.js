@@ -15,7 +15,10 @@ const  mongoose = require('mongoose')
 
  const mongoURI = process.env.MONGO_URI || 'mongodb+srv://dipankarbarman803_db_user:Gomeet123@gomeetc.zkals9h.mongodb.net/?appName=GomeetC';
 
-mongoose.connect(mongoURI)
+mongoose.connect(mongoURI,{
+ family:4
+}
+ )
   .then(() => {
     console.log("✅ MongoDB connected Successfully");
   })
