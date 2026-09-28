@@ -1,4 +1,5 @@
-
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']); // Google Public DNS
 const express = require('express');
 const cookieParser = require("cookie-parser")
 
