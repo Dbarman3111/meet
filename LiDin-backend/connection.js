@@ -16,6 +16,7 @@ const  mongoose = require('mongoose')
  const mongoURI = process.env.MONGO_URI || 'mongodb+srv://dipankarbarman803_db_user:Gomeet123@gomeetc.zkals9h.mongodb.net/?appName=GomeetC';
 
 mongoose.connect(mongoURI,{
+ serverSelectionTimeoutMS: 5000,
  family:4
 }
  )
@@ -23,5 +24,5 @@ mongoose.connect(mongoURI,{
     console.log("✅ MongoDB connected Successfully");
   })
   .catch(err => {
-    console.error("MongoDB connection error:", err.message || err);
+    console.error("❌ MongoDB connection error:", err.message || err);
   });
